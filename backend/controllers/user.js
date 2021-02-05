@@ -38,7 +38,7 @@ exports.login = (req, res, next) => {
               userId: user._id,
               token: jwt.sign( // renvoi nouveau token au front
                 { userId: user._id }, // verif pour sécuriser modif sauce
-                'RANDOM_TOKEN_SECRET', // cle encodage
+                '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', // cle encodage
                 { expiresIn: '24h' } // durée validité
               )
             });

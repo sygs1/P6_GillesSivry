@@ -5,7 +5,7 @@ require('dotenv').config();
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1]; // recup header ()
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const decodedToken = jwt.verify(token, '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'); //cle
     const userId = decodedToken.userId;     //decodage token = objet js classique
     if (req.body.userId && req.body.userId !== userId) { // si tt ko -> throw sinon next
       throw 'Invalid user ID';
