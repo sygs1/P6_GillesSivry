@@ -17,7 +17,7 @@ const apiLimiter = rateLimit({
 ////
 require('dotenv').config(); // import environnement
 
-// connexion mongoDb // 'mongodb+srv://sygs1:Jsb,alr12@cluster0.rzqoh.mongodb.net/<sopekocko>?retryWrites=true&w=majority',
+
 mongoose.connect(process.env.Admin3,
   { useNewUrlParser: true,
     useCreateIndex: true,
