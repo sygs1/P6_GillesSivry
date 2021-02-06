@@ -27,7 +27,7 @@ exports.modifySauce = (req, res, next) => {
       ...JSON.parse(req.body.sauce),
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     } : { ...req.body };  
-  Sauce.updateOne({ _id: req.params.id, userId : req.userId  }, { ...sauceObject, _id: req.params.id })
+  Sauce.updateOne({ _id: req.params.id, userId : req.userId  }, { ...sauceObject, _id: req.params.id })  // verification du userId
   
     .then(() => res.status(200).json({ message: 'Sauce modifiée !'}))
     .catch(error => res.status(400).json({ error }));
@@ -37,7 +37,7 @@ exports.modifySauce = (req, res, next) => {
 
 // supprime sauce
 exports.deleteSauce = (req, res, next) => {
-    Sauce.findOne({ _id: req.params.id, userId : req.userId }) // _id de mongoDB
+    Sauce.findOne({ _id: req.params.id, userId : req.userId }) // _id de mongoDB + verification du userId
       .then(sauce => {
         const filename = sauce.imageUrl.split('/images/')[1];
         fs.unlink(`images/${filename}`, () => {
@@ -65,8 +65,6 @@ exports.getSauces = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
     
-
-
 
 // like sauce  /------------------------------
 exports.likerSauce = (req, res, next) => { 

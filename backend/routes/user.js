@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../models/user');
+const auth = require('../models/user'); // passe par models
 const userCtrl = require('../controllers/user');
-const protectLog = require('../middleware/protectLog');
+const protectLog = require('../middleware/protectLog'); // passe par middleware protectLog
 
-//const User = require('/models/user');
 //---------------------
 // crea user dans mongo
-router.post('/api/auth/signup', (req, res, next) => {
+router.post('/api/auth/signup', (req, res, next) => { // passe par auth
     delete req.body._id;
-    const users = new Users({
+    const users = new Users({   // nouveau user
         ...req.body
     });
     thing.save()

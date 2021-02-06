@@ -25,7 +25,5 @@ router.delete('/:id', auth, saucesCtrl.deleteSauce);
 // like/dislike une sauce
 router.post("/:id/like", auth, saucesCtrl.likerSauce);
 
-//router.post("/:id/like", auth, saucesCtrl.dislikeSauce);
-
 //-------------
 module.exports = router; // retour logique router dans app.js

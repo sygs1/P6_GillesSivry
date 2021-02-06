@@ -1,10 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose'); 
+const express = require('express'); // cadrage techno
+const mongoose = require('mongoose');  // cadrage techno
 const app = express();
 const userRoutes = require('./routes/user');
 const saucesRoutes = require('./routes/sauces');
 const bodyParser = require('body-parser');
-const path = require('path');
+const path = require('path'); //gestion dossier
 
 const helmet = require('helmet') // protect https - prev attaque XSS
 
@@ -26,13 +26,13 @@ mongoose.connect(process.env.Admin3,
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 mongoose.set('useCreateIndex', true);
 //
-app.use("/api/", apiLimiter); // bruteForce
+app.use("/api/", apiLimiter); // prevention bruteForce le plus tôt possible
 //
 app.use(helmet()) // XSS
 
 app.use(bodyParser.json());
 ///----
-  // acces server = CORS !!  
+  // acces server 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');  // tout le monde
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');

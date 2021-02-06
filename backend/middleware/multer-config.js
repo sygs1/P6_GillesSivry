@@ -1,6 +1,6 @@
-const multer = require('multer');
+const multer = require('multer'); // gestion dossier
 
-const MIME_TYPES = {
+const MIME_TYPES = { // cadrage extensions autorisées
   "image/jpg": "jpg",
   "image/jpeg": "jpeg",
   "image/png": "png",
@@ -8,12 +8,12 @@ const MIME_TYPES = {
   "image/gif": "gif"
 };
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ // accès disk
   destination: (req, file, callback) => {
     callback(null, 'images');
   },
   filename: (req, file, callback) => {
-    const name = file.originalname.split(' ').join('_');
+    const name = file.originalname.split(' ').join('_'); // recherche
     const extension = MIME_TYPES[file.mimetype];
     callback(null, name + Date.now() + '.' + extension);
   }
