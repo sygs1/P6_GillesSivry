@@ -21,7 +21,8 @@ require('dotenv').config(); // import environnement
 mongoose.connect(process.env.Admin3,
   { useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true })
+    useUnifiedTopology: true 
+  })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 mongoose.set('useCreateIndex', true);
