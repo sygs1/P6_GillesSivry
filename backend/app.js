@@ -18,7 +18,7 @@ const apiLimiter = rateLimit({
 require('dotenv').config(); // import environnement
 
 
-mongoose.connect(process.env.Admin3,
+mongoose.connect(process.env.AdminRW,
   { useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true 
